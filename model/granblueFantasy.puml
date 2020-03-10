@@ -1,0 +1,26 @@
+@startuml
+class User {
+}
+
+Party <-->"1..*" Member
+Member --* Charactor
+
+class Party{
+}
+
+class Member{
+OrderEnum 順番
+}
+
+enum OrderEnum{
+メイン1,
+メイン2,
+メイン3,
+メイン4,
+サブ1,
+サブ2
+}
+
+class Charactor{
+}
+@enduml
