@@ -9,10 +9,10 @@ class Party{
 }
 
 class Member{
-OrderEnum 順番
+Order 順番
 }
 
-enum OrderEnum{
+enum Order{
 メイン1,
 メイン2,
 メイン3,
@@ -22,5 +22,60 @@ enum OrderEnum{
 }
 
 class Charactor{
+int id
+int rare
+int レベル上限解放数
+int 消化フェイト数
+Status ステータス
+Attribute 属性
+WeaponFocus 得意武器
+Species 種族
+CharactorType キャラクターのタイプ
+
+getLebelLimit(rare, レベル上限解放数): レベル上限
+}
+
+enum WeaponFocus{
+private Weapon Weapon1
+private Weapon Weapon2
+(剣, null)
+(剣, 刀)
+}
+
+enum Weapon{
+剣
+斧
+}
+
+
+enum Attribute{
+火
+水
+土
+風
+光
+闇
+}
+enum Species{
+ヒューマン
+エルーン
+ドラフ
+ハーヴィン
+種族不明
+}
+
+enum CharactorType{
+攻撃
+防御
+}
+
+enum Status{
+ (ニオ, 1, 1021, 6003)
+
+ private charactorId
+ private level
+ private hp
+ private power
+
 }
 @enduml
