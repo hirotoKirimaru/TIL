@@ -1,0 +1,61 @@
+;=====================================================================
+; 自動ログイン TTL
+;=====================================================================
+; ホスト設定
+strdim HOSTNM 4
+HOSTNM[0] = 'AP#1'
+HOSTNM[1] = 'AP#2'
+HOSTNM[2] = 'AP#3'
+HOSTNM[3] = 'AP#4'
+strdim HOSTIPLIST 4
+HOSTIPLIST[0] = '168.62.206.69'
+HOSTIPLIST[1] = '168.62.206.69'
+HOSTIPLIST[2] = '168.62.206.69'
+HOSTIPLIST[3] = '168.62.206.69'
+
+; ログインユーザ
+strdim USERLIST 4
+USERLIST[0] = 'kirimaru'
+USERLIST[1] = 'kirimaru'
+USERLIST[2] = 'kirimaru'
+USERLIST[3] = 'kirimaru'
+
+; ログインパスワード
+strdim USERPWLIST 4
+USERPWLIST[0] = 'kirimaru123!'
+USERPWLIST[1] = 'kirimaru123!'
+USERPWLIST[2] = 'kirimaru123!'
+USERPWLIST[3] = 'kirimaru123!'
+
+; 設定INIファイル
+strdim INILIST 4
+INILIST[0] = 'AP1.ini'
+INILIST[1] = 'AP2.ini'
+INILIST[2] = 'AP3.ini'
+INILIST[3] = 'AP4.ini'
+
+;; 接続先ホスト選択
+listbox '接続するホストを選択して下さい' '接続ホスト選択' HOSTNM
+if result >= 0 then
+    HOSTADDR = HOSTIPLIST[result]
+    USERNAME = USERLIST[result]
+    PASSWORD = USERPWLIST[result]
+    INIFILE  = INILIST[result]
+else
+    end
+endif
+
+; コマンド
+COMMAND = HOSTADDR
+strconcat COMMAND ':22 /ssh /2 /auth=password /user='
+strconcat COMMAND USERNAME
+strconcat COMMAND ' /passwd='
+strconcat COMMAND PASSWORD
+strconcat COMMAND ' /F='
+strconcat COMMAND INIFILE
+
+; 接続
+connect COMMAND
+
+; マクロ終了
+end
