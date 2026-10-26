@@ -17,7 +17,6 @@ interface ReCAPTCHAResponse {
 
 }
 
-
 @Component
 export default class Login extends Vue {
    private token = '';
@@ -55,7 +54,7 @@ export default class Login extends Vue {
   }
 
   // eslint-disable-next-line class-methods-use-this
-  async server(token: any): Promise<{}> {
+  async server(token: any): Promise<object> {
     console.log('server');
     // ここに発行したsecret keyを設定
     const serverSecret = '';
